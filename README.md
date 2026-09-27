@@ -1,5 +1,7 @@
 # ForecastLab
 
+[Live demo](https://yash-forecastlab.onrender.com) · [Public demo limitations](docs/PUBLIC_DEMO.md)
+
 **An end-to-end forecasting and decision support platform.** Import daily data, compare four forecasting methods, evaluate an untouched holdout, generate future predictions, and explore capacity or inventory scenarios.
 
 Built as a general data science / ML engineering portfolio project. It works with nonnegative daily signals such as orders, traffic, rentals, or service requests.

@@ -2,6 +2,14 @@
 
 Verified on this workspace with Python 3.12.14. Exact installed Python dependencies are in `requirements.lock`.
 
+## Public deployment verification — 28 September 2026
+
+- [GitHub Actions run](https://github.com/cyash24f3/forecastlab/actions/runs/36344759092) passed: 36 automated tests and Docker image build.
+- [Live application](https://yash-forecastlab.onrender.com) deployed on Render Free; health endpoint and primary interactive workflow verified.
+- Public mutation restrictions were checked; full editing/admin features remain available when running the repository privately.
+- Free demo instances can sleep and reset their temporary data. This is a portfolio deployment, not a production availability claim.
+- PostgreSQL integration passed in the GitHub Actions service container.
+
 ## Completed locally
 
 - **35 automated tests passed**, covering data validation, feature construction, recursive prediction, hand-calculated metrics, interval rank selection, holdout isolation, serialization, capacity/inventory arithmetic, API routes, artifact exports, zero-demand JSON handling, and interrupted-run recovery.
@@ -20,10 +28,10 @@ Verified on this workspace with Python 3.12.14. Exact installed Python dependenc
 
 ## Not established by these checks
 
-- **PostgreSQL runtime:** one integration test was skipped because no running test database was configured. A real PostgreSQL service and that test are configured in GitHub Actions, but the workflow has not been run remotely.
+- **PostgreSQL runtime:** one integration test was skipped because no running test database was configured. This test subsequently passed in remote CI, as recorded above.
 - **Docker image/runtime:** Docker was installed, but its daemon was unavailable. The image was not built or executed in this workspace. Compose syntax validation is not a container runtime test.
 - **MLflow server and S3:** the implemented API contracts were tested with mocks, not a live tracking server or AWS credentials.
-- **Production operation:** no cloud deployment, authentication, high availability, sustained load test, SLA, or real business impact has been demonstrated.
+- **Production operation:** the Render demo does not establish authentication, high availability, sustained load capacity, an SLA, or real business impact.
 - **Dependency warning:** Starlette's test client currently emits a deprecation warning about its httpx adapter. Tests pass; this is a future maintenance item, not an application failure.
 
 See `EVALUATION.md` for actual statistical results. Passing software tests does not imply that the forecasts are accurate enough for operational decisions.
