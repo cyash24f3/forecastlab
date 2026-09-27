@@ -1,0 +1,229 @@
+{
+  "created_at": "2026-09-27T08:27:42.470712+00:00",
+  "horizon": 14,
+  "nominal_coverage": 0.8,
+  "series": [
+    {
+      "series_id": "Daily orders",
+      "model": "ridge",
+      "holdout": {
+        "mae": 14.260782407330362,
+        "rmse": 18.113008231180384,
+        "wape": 0.0490422386889278,
+        "bias": -3.4963540315608737,
+        "absolute_error_sum": 199.65095370262506,
+        "actual_sum": 4071.0,
+        "n": 14
+      },
+      "baseline": {
+        "mae": 27.357142857142858,
+        "rmse": 31.417692922482843,
+        "wape": 0.09408007860476542,
+        "bias": -1.6428571428571428,
+        "absolute_error_sum": 383.0,
+        "actual_sum": 4071.0,
+        "n": 14
+      },
+      "coverage": 1.0,
+      "interval_radius": 37.646579227899906,
+      "calibration_points": 28,
+      "folds": [
+        {
+          "purpose": "selection",
+          "train_end": "2026-07-04",
+          "test_start": "2026-07-05",
+          "test_end": "2026-07-18"
+        },
+        {
+          "purpose": "selection",
+          "train_end": "2026-07-18",
+          "test_start": "2026-07-19",
+          "test_end": "2026-08-01"
+        },
+        {
+          "purpose": "selection",
+          "train_end": "2026-08-01",
+          "test_start": "2026-08-02",
+          "test_end": "2026-08-15"
+        },
+        {
+          "purpose": "calibration",
+          "train_end": "2026-08-15",
+          "test_start": "2026-08-16",
+          "test_end": "2026-08-29"
+        },
+        {
+          "purpose": "calibration",
+          "train_end": "2026-08-29",
+          "test_start": "2026-08-30",
+          "test_end": "2026-09-12"
+        },
+        {
+          "purpose": "holdout",
+          "train_end": "2026-09-12",
+          "test_start": "2026-09-13",
+          "test_end": "2026-09-26"
+        }
+      ],
+      "feature_importance": null
+    },
+    {
+      "series_id": "Support requests",
+      "model": "ridge",
+      "holdout": {
+        "mae": 11.825936651990755,
+        "rmse": 13.60895554835969,
+        "wape": 0.07488155274892382,
+        "bias": -2.410482840873694,
+        "absolute_error_sum": 165.56311312787057,
+        "actual_sum": 2211.0,
+        "n": 14
+      },
+      "baseline": {
+        "mae": 14.928571428571429,
+        "rmse": 17.588551471259446,
+        "wape": 0.0945273631840796,
+        "bias": -2.357142857142857,
+        "absolute_error_sum": 209.0,
+        "actual_sum": 2211.0,
+        "n": 14
+      },
+      "coverage": 0.5714285714285714,
+      "interval_radius": 14.022603613551695,
+      "calibration_points": 28,
+      "folds": [
+        {
+          "purpose": "selection",
+          "train_end": "2026-07-04",
+          "test_start": "2026-07-05",
+          "test_end": "2026-07-18"
+        },
+        {
+          "purpose": "selection",
+          "train_end": "2026-07-18",
+          "test_start": "2026-07-19",
+          "test_end": "2026-08-01"
+        },
+        {
+          "purpose": "selection",
+          "train_end": "2026-08-01",
+          "test_start": "2026-08-02",
+          "test_end": "2026-08-15"
+        },
+        {
+          "purpose": "calibration",
+          "train_end": "2026-08-15",
+          "test_start": "2026-08-16",
+          "test_end": "2026-08-29"
+        },
+        {
+          "purpose": "calibration",
+          "train_end": "2026-08-29",
+          "test_start": "2026-08-30",
+          "test_end": "2026-09-12"
+        },
+        {
+          "purpose": "holdout",
+          "train_end": "2026-09-12",
+          "test_start": "2026-09-13",
+          "test_end": "2026-09-26"
+        }
+      ],
+      "feature_importance": null
+    },
+    {
+      "series_id": "Web traffic",
+      "model": "ridge",
+      "holdout": {
+        "mae": 19.954976169558595,
+        "rmse": 26.058065761009303,
+        "wape": 0.03701731368408909,
+        "bias": -6.578439650107084,
+        "absolute_error_sum": 279.36966637382034,
+        "actual_sum": 7547.0,
+        "n": 14
+      },
+      "baseline": {
+        "mae": 44.357142857142854,
+        "rmse": 52.332044266805184,
+        "wape": 0.08228435139790645,
+        "bias": -44.357142857142854,
+        "absolute_error_sum": 621.0,
+        "actual_sum": 7547.0,
+        "n": 14
+      },
+      "coverage": 0.9285714285714286,
+      "interval_radius": 55.1028717096159,
+      "calibration_points": 28,
+      "folds": [
+        {
+          "purpose": "selection",
+          "train_end": "2026-07-04",
+          "test_start": "2026-07-05",
+          "test_end": "2026-07-18"
+        },
+        {
+          "purpose": "selection",
+          "train_end": "2026-07-18",
+          "test_start": "2026-07-19",
+          "test_end": "2026-08-01"
+        },
+        {
+          "purpose": "selection",
+          "train_end": "2026-08-01",
+          "test_start": "2026-08-02",
+          "test_end": "2026-08-15"
+        },
+        {
+          "purpose": "calibration",
+          "train_end": "2026-08-15",
+          "test_start": "2026-08-16",
+          "test_end": "2026-08-29"
+        },
+        {
+          "purpose": "calibration",
+          "train_end": "2026-08-29",
+          "test_start": "2026-08-30",
+          "test_end": "2026-09-12"
+        },
+        {
+          "purpose": "holdout",
+          "train_end": "2026-09-12",
+          "test_start": "2026-09-13",
+          "test_end": "2026-09-26"
+        }
+      ],
+      "feature_importance": null
+    }
+  ],
+  "aggregate_holdout": {
+    "mae": 15.347231742959904,
+    "rmse": 19.93579301578883,
+    "wape": 0.04661101548950148,
+    "bias": -4.1617588408472175,
+    "absolute_error_sum": 644.583733204316,
+    "actual_sum": 13829.0,
+    "n": 42
+  },
+  "aggregate_baseline": {
+    "mae": 28.88095238095238,
+    "rmse": 36.67456624861172,
+    "wape": 0.08771422373273556,
+    "bias": -16.11904761904762,
+    "absolute_error_sum": 1213.0,
+    "actual_sum": 13829.0,
+    "n": 42
+  },
+  "holdout_coverage": 0.8333333333333334,
+  "mae_improvement_pct": 46.860368243667274,
+  "methodology": "3 rolling selection folds, 2 subsequent calibration folds, 1 final holdout. Each fold forecasts recursively. Selected models are refit on all data only after holdout scoring.",
+  "interval_note": "Nominal 80% empirical absolute-residual bands pooled across horizons within each series. Temporal dependence and refitting can reduce coverage; these are not guaranteed or simultaneous intervals.",
+  "versions": {
+    "numpy": "2.5.3",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.4.1"
+  },
+  "python": "3.12.14",
+  "mlflow_run_id": null
+}

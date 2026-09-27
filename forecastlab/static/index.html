@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ForecastLab: evaluated forecasts and transparent planning scenarios.">
+<title>ForecastLab · Demand intelligence</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%237760dc'/%3E%3Cpath d='M12 45L26 29L36 35L52 16' fill='none' stroke='white' stroke-width='6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/styles.css">
+<script src="/static/app.js" defer></script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<aside class="sidebar">
+ <a class="brand" href="/"><span class="brand-mark">↗</span>Forecast<span>Lab</span></a>
+ <div class="workspace-label">PLANNING WORKSPACE</div>
+ <nav aria-label="Main navigation">
+  <button class="nav-item active" data-page="overview"><span>◫</span>Forecast overview</button>
+  <button class="nav-item" data-page="models"><span>◈</span>Model lab</button>
+  <button class="nav-item" data-page="planner"><span>⌘</span>Decision planner</button>
+  <button class="nav-item" data-page="data"><span>▤</span>Data workspace</button>
+  <button class="nav-item" data-page="method"><span>ⓘ</span>How it works</button>
+ </nav>
+ <div class="sidebar-bottom"><span class="status-dot"></span>Local workspace<div>Forecasts you can inspect.<br>Decisions you can explain.</div><a href="/docs" target="_blank" rel="noopener">Explore API ↗</a></div>
+</aside>
+<div class="app-shell">
+ <header class="topbar"><div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumb">Forecast overview</strong></div><span class="version">v1.0 <span>·</span> Daily forecasting</span></header>
+ <main id="main">
+  <div class="page-heading"><div><div class="eyebrow">FROM SIGNAL TO DECISION</div><h1 id="page-title">A clearer view of what’s next.</h1><p id="page-subtitle">Understand demand. Compare the evidence. Plan with confidence.</p></div><button class="button secondary" id="import-shortcut">↑ Import CSV</button></div>
+  <div id="notice" role="status" aria-live="polite" hidden></div>
+  <section class="control-bar" aria-label="Workspace filters">
+   <label>DATASET<select id="dataset-select" aria-label="Dataset"><option value="">No datasets yet</option></select></label>
+   <label>SERIES<select id="series-select" aria-label="Series"><option value="">Select a dataset</option></select></label>
+   <label>TRAINING HORIZON<select id="horizon-select" aria-label="Training horizon"><option value="7">7 days</option><option value="14" selected>14 days</option><option value="28">28 days</option></select></label>
+   <button class="button primary" id="train-button">▶ Run forecast</button>
+  </section>
+  <div class="context-row"><span id="source-label">Bring your own daily data, or start with our synthetic demo.</span><label class="run-label">Run <select id="run-select" aria-label="Saved run"><option value="">No runs</option></select></label></div>
+  <div id="empty-state" class="empty-state" hidden><div class="empty-icon">↗</div><h2>Your next decision starts with data.</h2><p>Explore three synthetic demand series, or import a daily CSV.<br>Train four models and see how they perform on future dates.</p><button class="button primary" id="demo-button">Load demo data</button><p class="small">No credentials needed. Everything runs locally.</p></div>
+  <div id="training-state" class="training-state" hidden><span class="spinner"></span><div><strong>Building your forecast</strong><p id="training-message">Preparing data…</p></div></div>
+  <div id="no-run" class="no-run" hidden>This dataset is ready. Select a horizon and click <strong>Run forecast</strong> to evaluate models and generate predictions.</div>
+  <section class="page" id="page-overview">
+   <div class="kpi-grid" id="overview-kpis"></div>
+   <article class="card forecast-card"><div class="card-heading"><div><div class="eyebrow">DEMAND OUTLOOK</div><h2 id="forecast-title">Your demand forecast</h2><p id="forecast-subtitle"></p></div><a id="download-forecast" class="button secondary small-button" href="#">↓ Export CSV</a></div><div class="legend"><span><i class="line-key actual"></i>Observed</span><span><i class="line-key forecast"></i>Forecast</span><span><i class="band-key"></i>Nominal 80% band</span></div><div id="forecast-chart" class="chart"></div><div class="chart-footnote">Bands use held-out calibration residuals. Actual future coverage may differ from 80%; inspect measured coverage in Model lab.</div></article>
+   <div class="two-column"><article class="card"><div class="card-heading"><div><div class="eyebrow">READ THE SIGNAL</div><h2>What this forecast tells you</h2></div><span class="tag">Selected series</span></div><div id="insights" class="insights"></div><button class="text-button" data-goto="planner">Explore a planning scenario →</button></article><article class="card"><div class="card-heading"><div><div class="eyebrow">NEXT STEPS</div><h2>From forecast to action</h2></div></div><ol class="steps"><li><span>01</span><div><strong>Check the evidence</strong><p>Compare holdout errors and interval coverage.</p></div></li><li><span>02</span><div><strong>Set your assumptions</strong><p>Choose capacity, stock, or demand scenarios.</p></div></li><li><span>03</span><div><strong>Take the results with you</strong><p>Download predictions and evaluation artifacts.</p></div></li></ol></article></div>
+   <details class="card"><summary>Inspect daily forecast values</summary><div id="forecast-table" class="table-wrap"></div></details>
+  </section>
+  <section class="page" id="page-models" hidden>
+   <div id="model-kpis" class="kpi-grid"></div>
+   <article class="card"><div class="card-heading"><div><div class="eyebrow">MODEL SELECTION</div><h2>Let the baseline set the bar.</h2><p>Three earlier rolling windows select the model. Lower error is better.</p></div><a id="download-comparison" class="button secondary small-button" href="#">↓ Comparisons</a></div><div id="comparison-table" class="table-wrap"></div></article>
+   <article class="card"><div class="card-heading"><div><div class="eyebrow">UNTOUCHED HOLDOUT</div><h2>How well did it predict unseen days?</h2><p id="holdout-dates"></p></div><a id="download-holdout" class="button secondary small-button" href="#">↓ Holdout CSV</a></div><div class="legend"><span><i class="line-key actual"></i>Actual</span><span><i class="line-key forecast"></i>Selected model</span><span><i class="line-key baseline"></i>Seasonal naive</span></div><div id="holdout-chart" class="chart"></div></article>
+   <article class="card"><div class="card-heading"><div><div class="eyebrow">AUDIT TRAIL</div><h2>Time moves in one direction.</h2><p>Every prediction uses only information available at its forecast origin.</p></div><a id="download-summary" class="button secondary small-button" href="#">↓ Run summary</a></div><div id="fold-table" class="table-wrap"></div><p class="muted">After scoring the holdout, the selected model is refit on all observations to forecast future dates. This final fit does not change the holdout score.</p></article>
+  </section>
+  <section class="page" id="page-planner" hidden>
+   <div class="planner-layout"><article class="card scenario-controls"><div class="eyebrow">YOUR ASSUMPTIONS</div><h2>Make room for what’s next.</h2><p>Adjust inputs, then calculate a transparent planning scenario.</p><form id="scenario-form">
+    <label>Demand multiplier <output id="multiplier-label">1.00×</output><input id="multiplier" type="range" min="0.5" max="1.5" step="0.05" value="1"></label>
+    <label>Daily capacity<input id="capacity" type="number" min="0" max="1000000000000" step="any" value="500" required></label>
+    <details><summary>Inventory planning inputs</summary><label>On-hand stock<input id="on-hand" type="number" min="0" max="1000000000000" step="any" value="1000" required></label><label>Already on order<input id="on-order" type="number" min="0" max="1000000000000" step="any" value="0" required></label><div class="field-pair"><label>Lead time (days)<input id="lead-days" type="number" min="1" max="28" value="3" required></label><label>Review period<input id="review-days" type="number" min="0" max="28" value="4" required></label></div><label>Safety stock (units)<input id="safety-stock" type="number" min="0" max="1000000000000" step="any" value="100" required></label></details>
+    <button class="button primary" type="submit" id="scenario-button">Calculate scenario →</button>
+   </form><p class="small muted">Scenario assumptions are not learned causal effects. Inventory inputs apply only to stock-based use cases.</p></article>
+   <div><div class="kpi-grid planner-kpis" id="planner-kpis"></div><article class="card"><div class="card-heading"><div><div class="eyebrow">CAPACITY OUTLOOK</div><h2>Where demand meets your limits.</h2></div></div><div class="legend"><span><i class="line-key forecast"></i>Expected demand</span><span><i class="line-key capacity"></i>Daily capacity</span></div><div id="capacity-chart" class="chart"></div><p id="capacity-note" class="muted small"></p></article><article class="card"><div class="eyebrow">INVENTORY SCENARIO</div><h2>Replenishment, made explicit.</h2><div id="inventory-result"></div></article></div></div>
+  </section>
+  <section class="page" id="page-data" hidden>
+   <div class="two-column"><article class="card"><div class="eyebrow">BRING YOUR OWN DATA</div><h2>A simple, strict data contract.</h2><p>One daily row per series. Nonnegative values. No duplicate keys or missing dates.</p><form id="upload-form"><label>Dataset name<input name="name" id="upload-name" maxlength="100" value="My daily demand" required></label><label class="file-input">Choose CSV file<input type="file" id="csv-file" name="file" accept=".csv,text/csv" required></label><button class="button primary" type="submit" id="upload-button">↑ Validate & import</button></form><p class="small muted">Up to 5 MiB, 30,000 rows, and 12 series. Upload creates a new immutable dataset snapshot.</p></article><article class="card"><div class="eyebrow">CSV SCHEMA</div><h2>Three columns. One daily signal.</h2><pre>date,series_id,value
+2025-01-01,Website visits,420
+2025-01-02,Website visits,438
+2025-01-03,Website visits,407</pre><p class="muted">Minimum history: 126 days for a 7-day forecast, 168 for 14 days, or 252 for 28 days.</p><button id="download-template" class="button secondary">↓ Download example dataset</button><p class="small muted">Example download contains 560 days of generated synthetic data.</p></article></div>
+   <article class="card"><div class="card-heading"><div><div class="eyebrow">DATA QUALITY & PROVENANCE</div><h2 id="dataset-title">Current dataset</h2></div><span class="tag" id="dataset-source"></span></div><div id="quality-content"></div><div id="data-table" class="table-wrap"></div><details><summary>Inspect raw observations</summary><div id="source-preview" class="table-wrap"></div></details></article>
+   <article class="card"><div class="eyebrow">EXPERIMENT HISTORY</div><h2>Every run leaves a trail.</h2><div id="runs-table" class="table-wrap"></div></article>
+  </section>
+  <section class="page" id="page-method" hidden>
+   <article class="card prose"><div class="eyebrow">THE FORECASTLAB APPROACH</div><h2>Useful forecasts start with honest evaluation.</h2><p>ForecastLab models daily, nonnegative demand. It works with sales, web traffic, service requests, or similar series. It does not infer business context, holidays, promotions, or stockouts from a value alone.</p><div class="method-flow"><span>Validate</span>→<span>Select</span>→<span>Calibrate</span>→<span>Test</span>→<span>Refit</span>→<span>Plan</span></div><h3>Four candidates, the same forecast windows</h3><p>Seasonal naive repeats the last week. Moving average uses the latest 28 available values. Ridge regression and XGBoost use lagged values, trailing statistics, calendar features, and a time index. All multi-day predictions are recursive: predicted values, never future actuals, become the history for later steps.</p><h3>Selection is separate from the final test</h3><p>Three expanding-window folds select a model per series by MAE. Two later folds estimate an absolute-error interval width. The final horizon is reserved for holdout evaluation. Models are then refit on all history to produce the next forecast. Settings are fixed rather than optimized against the holdout.</p><h3>Intervals are estimates, not promises</h3><p>The nominal 80% band uses a finite-sample corrected quantile of absolute errors from the two calibration folds. Errors are pooled across lead times within each series. Time dependence, limited calibration data, distribution shifts, and refitting can reduce future coverage. The dashboard reports observed holdout coverage alongside the nominal level. Daily bands cannot be summed into a valid total-demand confidence interval.</p><h3>Metrics with clear meanings</h3><p><strong>MAE</strong> is the mean absolute error in the series’ units. <strong>WAPE</strong> is total absolute error divided by total actual demand; it is undefined when total actual demand is zero. <strong>RMSE</strong> gives large errors more weight. <strong>Bias</strong> is average prediction minus actual. <strong>Coverage</strong> is the proportion of holdout observations inside their predicted bands.</p><h3>Planning assumptions stay visible</h3><p>The capacity scenario assumes fixed daily capacity, with no carry-over. Inventory uses expected demand across lead time plus review period, plus a user-entered safety stock, minus inventory position. These scenarios do not establish cost savings or a probabilistic service level.</p><h3>Built for a local portfolio workflow</h3><p>SQLite runs by default; PostgreSQL is supported through Docker Compose. Training uses a single application process. Optional MLflow logging and explicit S3 exports are available through configuration and the CLI. This local application has no user authentication; add access controls and a durable worker queue before a shared production deployment.</p><a href="/docs" target="_blank" rel="noopener" class="button secondary">Open interactive API documentation ↗</a></article>
+  </section>
+  <footer>ForecastLab <span>·</span> Evidence before action. <a href="#method" data-goto="method">Methodology & assumptions</a></footer>
+ </main>
+</div>
+</body>
+</html>

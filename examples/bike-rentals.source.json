@@ -1,0 +1,15 @@
+{
+  "title": "Bike Sharing \u2014 daily rental counts",
+  "citation": "Fanaee-T, H. (2013). Bike Sharing [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5W894.",
+  "source_url": "https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset",
+  "download_url": "https://archive.ics.uci.edu/static/public/275/bike%2Bsharing%2Bdataset.zip",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "retrieved_at": "2026-09-27T08:30:38.123286+00:00",
+  "archive_sha256": "b70182d0d0508e9abbb79306ce5c0cec34869000f8220175ac83d11dbe845401",
+  "transformation": "day.csv: dteday renamed date; cnt renamed value; constant series_id Bike rentals; all other columns excluded.",
+  "rows": 731,
+  "start": "2011-01-01",
+  "end": "2012-12-31",
+  "limitation": "Historical 2011\u20132012 rental counts. Forecasts beyond the last observation are a historical demonstration, not current rental demand."
+}

@@ -1,0 +1,42 @@
+{
+  "run_id": "6798431f2941411a9b0ead1a8a736af1",
+  "dataset_id": "37771e66b1b64713a3c0b985d2680ef0",
+  "dataset_name": "UCI bike rentals (2011\u20132012)",
+  "source": "public-dataset",
+  "quality": {
+    "rows": 731,
+    "series_count": 1,
+    "series": [
+      {
+        "series_id": "Bike rentals",
+        "rows": 731,
+        "start": "2011-01-01",
+        "end": "2012-12-31",
+        "zero_share": 0.0
+      }
+    ],
+    "missing_values": 0,
+    "duplicate_keys": 0,
+    "missing_days": 0,
+    "sha256": "0771e22b73057c0b1dd1e7590eaec152accc8159022ea9b645c27d3149f85a2e",
+    "frequency": "daily",
+    "warnings": [
+      "Sales can understate demand during stockouts; this schema does not identify stockouts."
+    ],
+    "provenance": {
+      "title": "Bike Sharing \u2014 daily rental counts",
+      "citation": "Fanaee-T, H. (2013). Bike Sharing [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5W894.",
+      "source_url": "https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset",
+      "download_url": "https://archive.ics.uci.edu/static/public/275/bike%2Bsharing%2Bdataset.zip",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "retrieved_at": "2026-09-27T08:30:38.123286+00:00",
+      "archive_sha256": "b70182d0d0508e9abbb79306ce5c0cec34869000f8220175ac83d11dbe845401",
+      "transformation": "day.csv: dteday renamed date; cnt renamed value; constant series_id Bike rentals; all other columns excluded.",
+      "rows": 731,
+      "start": "2011-01-01",
+      "end": "2012-12-31",
+      "limitation": "Historical 2011\u20132012 rental counts. Forecasts beyond the last observation are a historical demonstration, not current rental demand."
+    }
+  }
+}

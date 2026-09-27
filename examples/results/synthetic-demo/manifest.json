@@ -1,0 +1,41 @@
+{
+  "run_id": "e1e7a26b061f4928bf01a237487ecad3",
+  "dataset_id": "6961790c454e473eb3273ebb7cfc114e",
+  "dataset_name": "Demo \u00b7 digital demand",
+  "source": "synthetic-demo",
+  "quality": {
+    "rows": 1680,
+    "series_count": 3,
+    "series": [
+      {
+        "series_id": "Daily orders",
+        "rows": 560,
+        "start": "2025-03-16",
+        "end": "2026-09-26",
+        "zero_share": 0.0
+      },
+      {
+        "series_id": "Support requests",
+        "rows": 560,
+        "start": "2025-03-16",
+        "end": "2026-09-26",
+        "zero_share": 0.0
+      },
+      {
+        "series_id": "Web traffic",
+        "rows": 560,
+        "start": "2025-03-16",
+        "end": "2026-09-26",
+        "zero_share": 0.0
+      }
+    ],
+    "missing_values": 0,
+    "duplicate_keys": 0,
+    "missing_days": 0,
+    "sha256": "33ba05bd1a88a5ccd295170eb5f164eaa3e4320bda7440a54647651ae79299d7",
+    "frequency": "daily",
+    "warnings": [
+      "Sales can understate demand during stockouts; this schema does not identify stockouts."
+    ]
+  }
+}
